@@ -1,0 +1,296 @@
+/* TASK 1: CSS Variables */
+:root {
+  --primary: #2563eb;
+  --accent: #f97316;
+  --bg-light: #f8fafc;
+  --text-dark: #1e293b;
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  --title-size: clamp(1.5rem, 5vw, 2.5rem); /* TASK 1: clamp() requirement */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* TASK 2: Header (Flexbox) */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-login {
+  background: #f1f5f9;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-cart {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--accent);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* TASK 3: Hero Banner (Pseudo-elements & Animation) */
+.hero-banner {
+  background: radial-gradient(circle at 80% 20%, #3b82f6, #0f172a 60%);
+  color: white;
+  padding: 60px 50px;
+  border-radius: 24px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-in; /* TASK 3 Animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-banner::before { /* TASK 3 Pseudo-element */
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  top: -50px;
+  left: -50px;
+}
+
+.hero-banner h1 {
+  font-size: var(--title-size);
+  margin: 0;
+}
+
+.gold-text {
+  color: #fbbf24;
+}
+
+.btn-shop {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* TASK 4: Filter Pills */
+.filter-pills {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0 30px;
+}
+
+.pill {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.pill:hover:not(.active) { /* TASK 4: :not() usage */
+  background: #f1f5f9;
+}
+
+.pill.active {
+  background: #eff6ff;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* TASK 5: Product Grid (CSS Grid) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* TASK 6 & 7: Card States & Animations */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 15px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* TASK 7 Transition */
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* TASK 7 Transform */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.img-box {
+  width: 100%;
+  height: 180px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TASK 6: Sale Variant */
+.card-sale {
+  border: 1.5px dashed #fecaca;
+}
+
+.badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.badge-sale {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.badge-low {
+  background: #ffedd5;
+  color: #f97316;
+}
+
+.stock-text {
+  color: #ef4444;
+  font-size: 9px;
+  text-align: right;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Product Details */
+h4 {
+  margin: 10px 0 5px;
+  font-size: 1rem;
+}
+
+.meta {
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.price .new {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.price .old {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.stars {
+  font-size: 12px;
+  margin: 8px 0;
+  color: #fbbf24;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-add.added {
+  background: #22c55e;
+  color: white;
+}
+
+/* TASK 8: Mobile Breakpoints */
+@media (max-width: 640px) {
+  .main-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-banner {
+    padding: 30px;
+    text-align: center;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 12px;
+  color: #94a3b8;
+}
